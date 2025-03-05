@@ -12,7 +12,7 @@ class WebhookController extends Controller
     {
         $response = match ($request->get('message_type')) {
             'TYPE_PING' => [
-                'version'   => env('APP_VERSION'),
+                'version'   => env('APP_VERSION', env('APP_ENV')),
                 'name'      => config('app.name'),
                 'time'      => Carbon::now()->toIso8601ZuluString()
             ],
